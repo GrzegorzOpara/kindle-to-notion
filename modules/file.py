@@ -1,5 +1,5 @@
 import re
-from classes.highlight import Highlight
+from modules.highlight import Highlight
 
 class KindleFile(object):
     

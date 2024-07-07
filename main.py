@@ -1,7 +1,7 @@
 import os
-from classes.book import Books
-from classes.file import KindleFile
-from classes.notion import Notion
+from modules.book import Books
+from modules.file import KindleFile
+from modules.notion import Notion
     
 def main():
 
