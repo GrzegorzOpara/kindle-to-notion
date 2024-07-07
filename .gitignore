@@ -162,7 +162,4 @@ cython_debug/
 #.idea/
 
 # Custom
-MyClippings.txt
 My\ Clippings.txt
-shell.txt
-page.json
