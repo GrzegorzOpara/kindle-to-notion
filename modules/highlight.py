@@ -1,8 +1,26 @@
 # from typing import Union
 
 class Highlight(object):
+    """
+    This class represents a highlighted text from the book. 
 
-    def __init__(self, title: str, author: str, page: str | int, location_start: str | int, location_end: str | int, date_added: str, text: str):        
+    Attributes:
+        title (str): The title of the book.
+        author (str): The author of the book.
+        page (int): The page number where the highlight is found (can be a string representation of an integer).
+        location_start (int): The starting location of the highlight within the source (can be a string representation of an integer).
+        location_end (int): The ending location of the highlight within the source (can be a string representation of an integer).
+        date_added (str): The date the highlight was added.
+        text (str): The actual highlighted text.
+        note (str, optional): An optional note associated with the highlight. Defaults to an empty string.
+
+    Raises:
+        TypeError: If any of the required attributes (`title`, `author`, `page`, or `text`) are not strings, 
+                or if `page`, `location_start`, or `location_end` are not both integers or strings.
+    """
+
+
+    def __init__(self, title: str, author: str, page: str | int, location_start: str | int, location_end: str | int, date_added: str, text: str) -> None:        
         self.title = title
         self.author = author
         self.page = int(page)

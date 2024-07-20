@@ -8,10 +8,13 @@ class KindleFile(object):
     def __init__(self, filename) -> None:
         self.filename = filename          
 
-    def parseFile(self):
+    def parse_file(self):
         """
-            param: file
-            return: lists of highlights with notes, sorted by book, start_loacation
+            Attributes: 
+                file: filename with highlights
+            
+            Returns: 
+                lists of highlights with notes, sorted by book, start_loacation
         """
         with open(self.filename, encoding="utf-8-sig") as file:
             content = file.readlines()
