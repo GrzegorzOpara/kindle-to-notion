@@ -1,3 +1,9 @@
+<p align="center">
+  <i>Do you like my work? Buy me a coffee!<i><BR>
+  <a href="https://www.buymeacoffee.com/grzegorz.opara" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+  
+</p>
+
 # Kindle to Notion
 
 This Python project allows you to automatically import your Kindle highlights into your Notion workspace.
