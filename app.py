@@ -3,9 +3,6 @@ from modules.book import Books
 from modules.file import KindleFile
 from modules.notion import Notion
 from flask import Flask, request, jsonify, make_response
-# from dotenv import load_dotenv
-
-# load_dotenv()
 
 app = Flask(__name__)
 
