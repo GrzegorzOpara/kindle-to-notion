@@ -3,9 +3,10 @@
   <a href="https://www.buymeacoffee.com/grzegorz.opara" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
   
 </p>
-[![kindle-to-notion](https://github.com/GrzegorzOpara/kindle-to-notion/actions/workflows/kindle-to-notion-workflow.yml/badge.svg)](https://github.com/GrzegorzOpara/kindle-to-notion/actions/workflows/kindle-to-notion-workflow.yml)
 
 # Kindle to Notion
+
+[![kindle-to-notion](https://github.com/GrzegorzOpara/kindle-to-notion/actions/workflows/kindle-to-notion-workflow.yml/badge.svg)](https://github.com/GrzegorzOpara/kindle-to-notion/actions/workflows/kindle-to-notion-workflow.yml)
 
 This Python project allows you to automatically import your Kindle highlights into your Notion workspace.
 
