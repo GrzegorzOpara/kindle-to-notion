@@ -39,7 +39,7 @@ This Python project allows you to automatically import your Kindle highlights in
       * ``file``: The Kindle highlight file you want to import.
     * Example:
         
-        ***These are fake notion_db nor API key, don't try to use them :)***
+        ***These are fake notion_db and notion api key, don't try to use them :)***
         ```bash
         curl -X POST \
         -F "notion_api_key=secret_3732hr2f90y34h3i4ro39ru" \
