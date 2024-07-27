@@ -1,4 +1,5 @@
-from highlight import Highlight
+from modules.highlight import Highlight
+
 
 class Book(object):
     """

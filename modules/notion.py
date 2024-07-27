@@ -68,7 +68,7 @@ class Notion(object):
         }
         self.notion_db = notion_db
 
-    def make_api_request(self):
+    def make_api_request(self, method, url, payload):
         try:
             response = requests.request(method, url, headers=self.headers, json=payload)
             response.raise_for_status()  # Raise exception for non-200 status codes
@@ -80,7 +80,7 @@ class Notion(object):
     
     def create_empty_book_page(self, title, author) -> str:
         page_id = ""
-        create_url = "https://api.notion.com/v1/pages"
+        url = "https://api.notion.com/v1/pages"
         payload = {
             "parent": {
                 "type": "database_id",
@@ -97,8 +97,8 @@ class Notion(object):
             }
         }
 
-        response = requests.post(create_url, headers=self.headers, json=payload)
-        page_id = json.loads(response.text)['id']
+        response = self.make_api_request('post', url, payload)
+        page_id = response['id']
         
         return page_id
 
@@ -153,13 +153,13 @@ class Notion(object):
             end_index = min(start_index + 99, len(highlights))
             
             # append notion page
-            append_url = f"https://api.notion.com/v1/blocks/{page_id}/children"
+            url = f"https://api.notion.com/v1/blocks/{page_id}/children"
             payload = {
                 "children": highlights[start_index:end_index]
             }
-            requests.patch(append_url, headers=self.headers, json=payload)
+            self.make_api_request('patch', url, payload)
             start_index += 99
-            time.sleep(10)
+            time.sleep(delay)
 
     def process_books(self, books) -> None:
         for book in books.get_books():

@@ -8,10 +8,10 @@ def main():
     kindleFile = KindleFile("My Clippings.txt")
     
     books = Books()
-    books.createBooksFromHighlights(kindleFile.parseFile())
+    books.create_books_from_highlights(kindleFile.parse_file())
     
     notion = Notion(os.environ["NOTION_TOKEN"], os.environ["NOTION_DB"])
-    notion.processBooks(books)
+    notion.process_books(books)
 
 if __name__ == "__main__":
     main()
