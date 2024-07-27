@@ -26,9 +26,9 @@ This Python project allows you to automatically import your Kindle highlights in
     https://www.notion.so/help/add-and-manage-connections-with-the-api#add-connections-to-pages
 4. Get your ``Notion database ID``: Copy the ID of the database (https://developers.notion.com/reference/retrieve-a-database).
 5. Run the app:
-    ``bash
-        gunicorn --bind 127.0.0.1:8080 app:app
-    ``
+    ```bash
+    gunicorn --bind 127.0.0.1:8080 app:app
+    ```
 
 6. Access the API endpoint:
     * Endpoint: ``/process_file``
@@ -51,11 +51,11 @@ This Python project allows you to automatically import your Kindle highlights in
 ### Docker
 If you prefer to use docker
 1. Build docker image
-```
+```bash
 docker build -t kindle-to-notion .
 ```
 2. Run docker imiage
-```
+```bash
 docker run -p 8080:8080 kindle-to-notion:latest
 ```
 
