@@ -12,6 +12,7 @@ This Python project allows you to automatically import your Kindle highlights in
 * **Handles large files:** Processes highlights in batches to avoid exceeding Notion API rate limits.
 
 ## Installation
+> If you prefer to use docker go to: [Docker section](#Docker)
 
 1. **Install Python:** If you don't have Python installed, download and install it from [https://www.python.org/](https://www.python.org/).
 2. **Install required packages:**
@@ -19,15 +20,16 @@ This Python project allows you to automatically import your Kindle highlights in
     pip install -r requirements.txt
     ``
 ## Usage
-1. Create a Notion database: Create a new database in your Notion workspace to store your book highlights. You can skip this step you you want to use an exisitng database.
-2. Create Notion Intergation https://www.notion.so/profile/integrations and get your ``Notion API key`` (Internal Integration Secret)
+1. Create a new database in your Notion workspace to store your book highlights. You can skip this step you you want to use an exisitng database.
+2. Create Notion Intergation https://www.notion.so/profile/integrations and get your ``Notion API key`` (aka. *Internal Integration Secret*)
 3. Set up connection in your Notion workspace:
     https://www.notion.so/help/add-and-manage-connections-with-the-api#add-connections-to-pages
-4. Get your ``Notion database ID``: Copy the ID of the database you created in step 1 (https://developers.notion.com/reference/retrieve-a-database).
+4. Get your ``Notion database ID``: Copy the ID of the database (https://developers.notion.com/reference/retrieve-a-database).
 5. Run the app:
     ``bash
-    gunicorn --bind 127.0.0.1:8080 app:app
+        gunicorn --bind 127.0.0.1:8080 app:app
     ``
+
 6. Access the API endpoint:
     * Endpoint: ``/process_file``
     * Method: ``POST``
@@ -35,20 +37,19 @@ This Python project allows you to automatically import your Kindle highlights in
       * ``notion_api_key``: Your Notion API key.
       * ``notion_db_id``: The ID of your Notion database.
       * ``file``: The Kindle highlight file you want to import.
+    * Example:
+        
+        ***These are fake notion_db nor API key, don't try to use them :)***
+        ```bash
+        curl -X POST \
+        -F "notion_api_key=secret_3732hr2f90y34h3i4ro39ru" \
+        -F "notion_db_id=3r9ehfw9347rf3hw9rfy34" \
+        -F "file=@/home/user/My Clippings.txt" \
+        http://127.0.0.1:8080/process_file
 7. View your highlights in Notion: Once the file is processed, you'll see the book pages and highlights in your Notion database.
 
-### Example
-***These are fake notion_db nor API key, don't try to use them :)***
-```bash
-curl -X POST \
--F "notion_api_key=secret_3732hr2f90y34h3i4ro39ru" \
--F "notion_db_id=3r9ehfw9347rf3hw9rfy34" \
--F "file=@/home/user/My Clippings.txt" \
-http://127.0.0.1:8080/process_file
-```
-
 ### Docker
-If you prefer to use docker:
+If you prefer to use docker
 1. Build docker image
 ```
 docker build -t kindle-to-notion .
