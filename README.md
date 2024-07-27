@@ -1,8 +1,13 @@
 <p align="center">
   <i>Do you like my work? Buy me a coffee!</i><BR>
   <a href="https://www.buymeacoffee.com/grzegorz.opara" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-  
+  <BR><BR>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Amazon_Kindle_logo.svg/388px-Amazon_Kindle_logo.svg.png">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/200px-Plus_symbol.svg.png" width="100" height="100">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Notion-logo.svg/240px-Notion-logo.svg.png" width="100" height="100">
 </p>
+
+
 
 # Kindle to Notion
 
