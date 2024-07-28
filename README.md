@@ -13,7 +13,7 @@
 
 [![kindle-to-notion](https://github.com/GrzegorzOpara/kindle-to-notion/actions/workflows/kindle-to-notion-workflow.yml/badge.svg)](https://github.com/GrzegorzOpara/kindle-to-notion/actions/workflows/kindle-to-notion-workflow.yml)
 
-This Python project allows you to automatically import your Kindle highlights into your Notion workspace.
+This Python back-end application allows you to automatically import your Kindle highlights into your Notion workspace.
 
 ## Features
 
