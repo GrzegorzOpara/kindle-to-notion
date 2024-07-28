@@ -2,9 +2,11 @@ import os
 from modules.book import Books
 from modules.file import KindleFile
 from modules.notion import Notion
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/health")
 def health_check():
