@@ -22,6 +22,7 @@ This Python back-end application allows you to automatically import your Kindle 
 * **Creates Notion pages for each book:** Creates a new Notion page for each book in your specified Notion database.
 * **Adds highlights as blocks:** Adds each highlight as a Notion block with the appropriate formatting (callout for page number and highlight text, quote for the highlight itself).
 * **Supports notes:** Includes notes associated with highlights in the Notion blocks.
+* **Security** Support basic auth (using API key) and rate limiting
 * **Handles large files:** Processes highlights in batches to avoid exceeding Notion API rate limits.
 
 ## Installation
@@ -38,12 +39,24 @@ This Python back-end application allows you to automatically import your Kindle 
 3. Set up connection in your Notion workspace:
     https://www.notion.so/help/add-and-manage-connections-with-the-api#add-connections-to-pages
 4. Get your ``Notion database ID``: Copy the ID of the database (https://developers.notion.com/reference/retrieve-a-database).
-5. Run the app:
+5. Create API key and store it in .env file, for instance
+``API_KEY=3089657c-30fc-4fa6-86e1-f9fd38c03264``
+6. Encode API Key to use it to call the process_file endpoint, you can use this site https://www.base64encode.org/
+
+   **when encodig please put : (a colon) as a first chracter followed by the API KEY**
+
+   for instance: ``:3089657c-30fc-4fa6-86e1-f9fd38c03264``
+
+   that should result in encoded: ``OjMwODk2NTdjLTMwZmMtNGZhNi04NmUxLWY5ZmQzOGMwMzI2NA==``
+
+   **Do not share the API key!**
+
+7. Run the app:
     ```bash
     gunicorn --bind 127.0.0.1:8080 app:app
     ```
 
-6. Access the API endpoint:
+8. Access the API endpoint:
     * Endpoint: ``/process_file``
     * Method: ``POST``
     * Form data:
@@ -52,25 +65,20 @@ This Python back-end application allows you to automatically import your Kindle 
       * ``file``: The Kindle highlight file you want to import.
     * Example:
         
-        ***These are fake notion_db and notion api key, don't try to use them :)***
+        ***These are fake notion_db, notion api key and encoded api key, don't try to use them :)***
         ```bash
         curl -X POST \
+        -H "Authorization: Basic OjMwODk2NTdjLTMwZmMtNGZhNi04NmUxLWY5ZmQzOGMwMzI2NA=="
         -F "notion_api_key=secret_3732hr2f90y34h3i4ro39ru" \
         -F "notion_db_id=3r9ehfw9347rf3hw9rfy34" \
         -F "file=@/home/user/My Clippings.txt" \
         http://127.0.0.1:8080/process_file
-7. View your highlights in Notion: Once the file is processed, you'll see the book pages and highlights in your Notion database.
+9. View your highlights in Notion: Once the file is processed, you'll see the book pages and highlights in your Notion database.
 
 ### Docker
 If you prefer to use docker
-1. Build docker image
-```bash
-docker build -t kindle-to-notion .
-```
-2. Run docker imiage
-```bash
-docker run -p 8080:8080 kindle-to-notion:latest
-```
+1. Build docker image ```bash docker build --build-arg API_KEY==$API_KEY -t kindle-to-notion . ```
+2. Run docker imiage ```bash docker run --env-file=.env -p 8080:8080 kindle-to-notion:latest ```
 
 ## Notes
 * The app currently supports .txt Kindle highlight files.

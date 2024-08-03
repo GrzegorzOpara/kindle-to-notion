@@ -6,9 +6,15 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_httpauth import HTTPBasicAuth
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
+
+api_key = os.getenv('API_KEY')
 
 limiter = Limiter(
     get_remote_address,
@@ -18,12 +24,18 @@ limiter = Limiter(
     strategy="fixed-window"
 )
 
+auth = HTTPBasicAuth()
+
+@auth.verify_password
+def verify_key(username, password):
+    return password == api_key
 
 @app.route("/health")
 def health_check():
     return jsonify({'message': 'service is healthy'}), 200
 
 @app.route("/process_file", methods = ['POST'])
+@auth.login_required
 def kindle_to_notion():
     notion_api_key = request.form.get('notion_api_key')
     notion_db_id = request.form.get('notion_db_id')
